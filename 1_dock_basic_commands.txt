@@ -1,0 +1,137 @@
+Docker Basic Commands
+---------------------
+1. Docker Version
+------------------
+docker version
+
+2. Docker Information
+---------------------
+docker info
+
+3. Create your first container - helloworld
+--------------------------------------------
+docker run hello-world
+
+4. Run a Ubuntu Docker container
+---------------------------------
+docker run -it ubuntu bash
+---docker run -it ubuntu:16.04 bash
+
+5. Verify if docker containers are running
+-------------------------------------------
+
+docker ps
+
+Verify the stopped containers
+--------------------------------
+
+docker ps -a
+
+6. List Images present in local registry
+-----------------------------------------
+
+docker images
+
+7. Download a Centos Image from docker hub registry
+---------------------------------------------------
+
+docker pull centos
+
+8. Attach to a docker container
+-------------------------------
+Attach to running container to check what is going on
+docker attach container_id
+docker attach container_name
+
+9.Run commands or login to docker container
+--------------------------------------------
+docker exec -it container_id commandtoexecute
+docker exec -it container_name commandtoexecute
+
+10. Define a name for your container
+-------------------------------------
+docker run -it --name aioug ubuntu 
+
+11. Create a docker image
+----------------------------
+docker create -it --name aioug_new ubuntu
+docker images
+docker ps -a
+
+
+12. Start & Stop containers
+---------------------------
+docker start container_id
+docker stop container_id
+
+--docker start container_name
+--docker stop container_name
+
+start all containers
+--------------------
+docker start $(docker ps -aq)
+
+stop all containers
+-------------------
+docker stop $(docker ps -aq)
+
+
+13. Delete a Container
+----------------------
+docker rm container_id
+--docker rm fewcharacters of container_id
+
+forcefully remove container
+---------------------------
+docker rm -f container_id
+
+delete all stopped containers
+-----------------------------
+docker rm -f $(docker ps -aq)
+
+14. Delete an Image
+--------------------
+
+docker rmi image_id
+--docker rmi image_name
+
+forcefully remove image
+-----------------------
+docker rmi -f image_id
+
+delete all images
+-----------------
+docker rmi -f $(docker images -a -q)
+
+15. docker help
+----------------
+docker
+docker run --help
+man docker run
+
+16. docker login
+----------------
+docker login
+
+17. docker copy
+----------------
+docker cp source destination
+
+18. View Container Configuration 
+---------------------------------
+docker inspect container_id|grep "IpAddress"
+
+19. History of a Image
+---------------------------
+docker images
+docker history
+
+20. Set hostname for container
+-------------------------------
+docker run -it --name aioug_new2 --hostname aioug ubuntu
+
+
+
+21. docker images
+-----------------
+docker search ubuntu

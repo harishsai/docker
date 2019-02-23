@@ -1,0 +1,43 @@
+Docker Files
+
+FROM
+LABEL
+ADD
+ARG
+ENV
+ENTRYPOINT
+EXPOSE
+ONBUILD
+CMD
+RUN
+
+1. Create a your first docker file
+-----------------------------------
+vi Dockerfile
+
+FROM ubuntu:latest
+MAINTAINER testing@test.com
+RUN apt-get update
+RUN apt-get install -y nginx
+ENTRYPOINT ["/usr/sbin/nginx","-g","daemon off;"]
+EXPOSE 80
+
+2. Build your docker file
+--------------------------
+
+docker build -t web .
+
+3. Run your docker container
+-----------------------------
+
+docker run -d --name webserver web
+
+4. Fetch the ipaddress using docker inspect
+--------------------------------------------
+
+docker inspect webserver | grep "IPAddress"
+
+5. Use curl and test nginx
+---------------------------
+curl http://ipaddress:80
+

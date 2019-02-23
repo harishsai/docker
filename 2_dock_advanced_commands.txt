@@ -1,0 +1,49 @@
+Docker Advanced Commands
+-------------------------
+
+1. Docker Run -i,t options
+--------------------------
+docker run busybox /bin/sh
+
+docker run -t busybox /bin/sh
+
+docker run -it busybox /bin/sh
+
+2. Set Environmental Variables
+------------------------------
+docker run -it -e ORACLE_HOME=/u01/app/oracle --name aioug2 ubuntu  
+
+3. Change default working directory
+-----------------------------------
+docker run -it --workdir /u01/app/oracle --name aioug3 ubuntu
+
+4. Run container in detached mode
+---------------------------------
+docker run -d --name redisdock redis
+
+5. Docker Expose Ports
+----------------------
+docker run -d -p 80:8080 tomcat 
+
+6. Docker Bind mount points
+----------------------------
+docker run -d -it --name aiougmount --mount type=bind,source="$(pwd)"/test,target=/test ubuntu
+ 
+7. docker volume
+-----------------
+docker volume create myvol2
+
+docker run -d -it --name aiougvol --mount type=volume,source=myvol2,target=/testing ubuntu
+
+8. Save a docker image
+----------------------
+docker images
+docker save redis > redis.tar
+docker rmi -f redis
+docker images
+9. Load a docker image
+----------------------
+docker load < redis.tar
+docker images
+
+
